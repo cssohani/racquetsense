@@ -6,3 +6,4 @@ class ChatView(APIView):
         message = request.data.get("message", "")
         return Response({"reply": f"You said: {message}"})
 
+
