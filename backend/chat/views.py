@@ -5,6 +5,7 @@ import httpx, os
 from rest_framework.decorators import api_view
 from .rag import retrieve_context
 from .llm import generate_tennis_answer
+from .filters import is_tennis_related_llm
 
 load_dotenv()
 
@@ -35,6 +36,15 @@ class ChatView(APIView):
 
         if not user_question:
             return Response({"reply": "Please ask a tennis-related question."})
+        
+        if not is_tennis_related_llm(user_question):
+            return Response({
+                "reply": (
+                    "Sorry, RacquetSense only answers tennis-related questions "
+                    "(technique, equipment, tournaments, or rules)."
+                ),
+                "rejected": True
+            })
 
         # Get relevant info (rankings or news)
         context = retrieve_context(user_question)
@@ -46,7 +56,7 @@ class ChatView(APIView):
             source_tag = "[Tennis Live Data API]"
 
         # Generate GPT answer
-        reply = generate_tennis_answer(user_question, context, source_tag)
+        reply = generate_tennis_answer(user_question, context)
         return Response({"reply": reply})
 
 
