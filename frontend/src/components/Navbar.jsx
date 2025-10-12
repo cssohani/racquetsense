@@ -1,15 +1,41 @@
+import { Link, useLocation } from "react-router-dom";
+
 export default function Navbar() {
+  const { pathname } = useLocation();
+  const isChat = pathname === "/chat";
+
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3 px-4 fixed-top">
-      <div className="container-fluid d-flex align-items-center">
-        {/* <img src="/assets/tennis-ball.svg" alt="logo" height="28" className="me-2" /> */}
-        <h5 className="fw-bold mb-0 text-success">RacquetSense</h5>
-        <div className="ms-auto d-flex gap-3">
-          <a href="#" className="text-secondary text-decoration-none">About</a>
-          <a href="#" className="text-secondary text-decoration-none">Features</a>
-          <a href="#" className="text-secondary text-decoration-none">Contact</a>
+    <nav className={isChat ? "navbar-vertical" : "navbar-horizontal"}>
+      {/* ----- Horizontal Navbar (Landing, About, Features) ----- */}
+      {!isChat && (
+        <div className="d-flex align-items-center justify-content-between w-100">
+          {/* Title now on the LEFT */}
+          <Link to="/" className="navbar-brand-left text-decoration-none">
+            RacquetSense
+          </Link>
+
+          {/* Links now on the RIGHT */}
+          <div className="nav-links-horizontal">
+            <Link to="/about">About</Link>
+            <Link to="/features">Features</Link>
+            <Link to="/chat">Chat</Link>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* ----- Vertical Sidebar (Chat Mode) ----- */}
+      {isChat && (
+        <div className="d-flex flex-column w-100">
+          <Link to="/" className="navbar-brand-left mb-4 text-decoration-none">
+            RacquetSense
+          </Link>
+          <div className="nav-links-vertical">
+            <Link to="/">Home</Link>
+            <Link to="/features">Features</Link>
+            <Link to="/about">About</Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

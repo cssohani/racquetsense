@@ -14,7 +14,7 @@ export default function Landing({ onSubmit }) {
       <div className="mb-5">
         <h1 className="display-4 fw-bold text-dark">Ask <span className="text-success">RacquetSense</span></h1>
         <p className="lead text-secondary mt-3">
-          Your intelligent tennis companion — ask about players, stats, tournaments, or technique.
+          Your intelligent tennis companion. Ask about players, stats, tournaments, or technique.
         </p>
       </div>
 

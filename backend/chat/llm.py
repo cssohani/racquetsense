@@ -10,7 +10,7 @@ def generate_tennis_answer(question: str, context: str, source_tag: str = "") ->
     prompt = f"""
 You are RacquetSense — an AI tennis analyst.
 Use the context below (live data or news) to answer the user's question clearly and conversationally.
-Always keep the answer factual, concise, and end with a short source tag like {source_tag}.
+Always keep the answer factual, concise.
 
 Context:
 {context}
