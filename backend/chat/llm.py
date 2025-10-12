@@ -6,7 +6,7 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_tennis_answer(question: str, context: str, source_tag: str = "") -> str:
-    """Send question + context to GPT for a conversational answer."""
+    
     prompt = f"""
 You are RacquetSense — an AI tennis analyst.
 Use the context below (live data or news) to answer the user's question clearly and conversationally.

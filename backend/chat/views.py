@@ -5,17 +5,17 @@ import httpx, os
 from rest_framework.decorators import api_view
 from .rag import retrieve_context
 from .llm import generate_tennis_answer
-from .filters import is_tennis_related_llm
+from .filters import is_tennis_related_llm, is_smalltalk
 
 load_dotenv()
 
 @api_view(["GET"])
 def test_tennis_api(request):
-    """Test your RapidAPI tennis endpoint."""
+    
     RAPID_KEY = os.getenv("RAPIDAPI_KEY")
     RAPID_HOST = os.getenv("RAPIDAPI_HOST")
 
-    # ⚠️ Adjust this URL once we confirm which API you’re using
+    
     url = "https://tennis-live-data.p.rapidapi.com/players/ATP"
 
     headers = {
@@ -30,12 +30,17 @@ def test_tennis_api(request):
         return Response({"status": r.status_code, "text": r.text})
 
 class ChatView(APIView):
-    """Main endpoint for RacquetSense chatbot."""
+    
     def post(self, request):
         user_question = request.data.get("message", "")
 
+
         if not user_question:
             return Response({"reply": "Please ask a tennis-related question."})
+        
+        smalltalk_reply = is_smalltalk(user_question)
+        if smalltalk_reply:
+            return Response({"reply": smalltalk_reply})
         
         if not is_tennis_related_llm(user_question):
             return Response({
@@ -46,16 +51,16 @@ class ChatView(APIView):
                 "rejected": True
             })
 
-        # Get relevant info (rankings or news)
+        #
         context = retrieve_context(user_question)
 
-        # Decide which source tag to use
+        
         if "news" in user_question.lower() or "headline" in user_question.lower():
             source_tag = "[NewsAPI]"
         else:
             source_tag = "[Tennis Live Data API]"
 
-        # Generate GPT answer
+        
         reply = generate_tennis_answer(user_question, context)
         return Response({"reply": reply})
 

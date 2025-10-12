@@ -2,34 +2,52 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 export default function Chat({ initialQuery }) {
-  const [messages, setMessages] = useState(
-    initialQuery
-      ? [{ role: "user", content: initialQuery }]
-      : [{ role: "bot", content: "Hi! Ask me anything about tennis 🎾" }]
-  );
+  const [messages, setMessages] = useState([
+  { role: "bot", content: "Hi! Ask me anything about tennis 🎾" },
+  ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bodyRef = useRef(null);
+  const hasRunRef = useRef(false);
 
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, loading]);
 
-  const send = async (text = input) => {
-    const q = text.trim();
-    if (!q) return;
+useEffect(() => {
+  if (initialQuery && !hasRunRef.current) {
+    hasRunRef.current = true;
+    setMessages([{ role: "user", content: initialQuery }]);
+    send(initialQuery, { appendUser: false });
+  }
+}, [initialQuery]);
+  
+
+
+const send = async (text = input, options = { appendUser: true }) => {
+  const q = text.trim();
+  if (!q) return;
+
+  if (options.appendUser) {
     setMessages((m) => [...m, { role: "user", content: q }]);
-    setInput("");
-    setLoading(true);
-    try {
-      const { data } = await axios.post("/api/chat/", { message: q });
-      setMessages((m) => [...m, { role: "bot", content: data.reply || "..." }]);
-    } catch {
-      setMessages((m) => [...m, { role: "bot", content: "⚠️ Connection error." }]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }
+
+  setInput("");
+  setLoading(true);
+
+  try {
+    const { data } = await axios.post("/api/chat/", { message: q });
+    setMessages((m) => [...m, { role: "bot", content: data.reply || "..." }]);
+  } catch {
+    setMessages((m) => [
+      ...m,
+      { role: "bot", content: "⚠️ Connection error." },
+    ]);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleKey = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
