@@ -54,7 +54,7 @@ export default function Chat() {
     } catch {
       setMessages((m) => [
         ...m,
-        { role: "bot", content: "⚠️ Connection error." },
+        { role: "bot", content: "Connection error." },
       ]);
     } finally {
       setLoading(false);

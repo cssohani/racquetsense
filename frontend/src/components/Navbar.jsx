@@ -16,6 +16,7 @@ export default function Navbar() {
 
           {/* Links now on the RIGHT */}
           <div className="nav-links-horizontal">
+            <Link to="/news">News</Link>
             <Link to="/about">About</Link>
             <Link to="/features">Features</Link>
             <Link to="/chat">Chat</Link>
@@ -30,6 +31,7 @@ export default function Navbar() {
             RacquetSense
           </Link>
           <div className="nav-links-vertical">
+            <Link to="/news">News</Link>
             <Link to="/">Home</Link>
             <Link to="/features">Features</Link>
             <Link to="/about">About</Link>

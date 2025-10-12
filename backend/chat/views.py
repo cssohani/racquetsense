@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view
 from .rag import retrieve_context
 from .llm import generate_tennis_answer
 from .filters import is_tennis_related_llm, is_smalltalk
+import requests
+from django.conf import settings
 
 load_dotenv()
 
@@ -28,6 +30,28 @@ def test_tennis_api(request):
         return Response({"status": r.status_code, "data": r.json()})
     except Exception:
         return Response({"status": r.status_code, "text": r.text})
+
+@api_view(["GET"])
+def get_tennis_news(request):
+
+    url = "https://newsapi.org/v2/everything"
+    params = {
+        "q": "tennis",
+        "language": "en",
+        "sortBy": "publishedAt",
+        "pageSize": 12,
+        "apiKey": settings.NEWS_API_KEY,
+    }
+
+    try:
+        res = requests.get(url, params=params, timeout=10)
+        res.raise_for_status()
+        data = res.json()
+        return Response(data)
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+
+        
 
 class ChatView(APIView):
     
@@ -63,5 +87,7 @@ class ChatView(APIView):
         
         reply = generate_tennis_answer(user_question, context)
         return Response({"reply": reply})
+    
+
 
 

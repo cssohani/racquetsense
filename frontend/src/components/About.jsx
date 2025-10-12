@@ -5,8 +5,8 @@ export default function About() {
         <h1 className="display-5 fw-bold mb-3 text-dark">
           About <span className="text-success">RacquetSense</span>
         </h1>
-        <p className="lead text-secondary mb-4" style={{ maxWidth: "700px" }}>
-          RacquetSense is your intelligent tennis companion — designed to make
+        <p className="lead text-secondary mb-4">
+          RacquetSense is your intelligent tennis companion. Designed to make
           insights about the game accessible to everyone. Powered by OpenAI and
           live tennis data, it helps players, fans, and coaches discover stats,
           strategies, and performance tips instantly.

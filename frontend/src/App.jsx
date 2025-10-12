@@ -1,9 +1,10 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import Landing from "./components/Landing.jsx";
-import Chat from "./components/Chat.jsx";
-import About from "./components/About.jsx";
-import Features from "./components/Features.jsx";
+import Navbar from "./components/Navbar";
+import Landing from "./components/Landing";
+import Chat from "./components/Chat";
+import About from "./components/About";
+import Features from "./components/Features";
+import News from './components/News';
 import "./styles.css";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Features />} />
+          <Route path="/news" element={<News />} />
         </Routes>
       </main>
     </div>

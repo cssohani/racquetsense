@@ -27,5 +27,5 @@ User Question:
         )
         return completion.choices[0].message.content.strip()
     except Exception as e:
-        return f"⚠️ Error generating answer: {e}"
+        return f"Error generating answer: {e}"
 

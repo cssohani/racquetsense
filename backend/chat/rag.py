@@ -28,7 +28,7 @@ def get_tennis_rankings():
         return f"Error fetching tennis rankings: {e}"
 
 def get_tennis_news():
-    """Fetch the latest tennis news headlines."""
+    
     url = f"https://newsapi.org/v2/everything?q=tennis&language=en&pageSize=5&apiKey={NEWS_KEY}"
     try:
         r = httpx.get(url, timeout=10)
