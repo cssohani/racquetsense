@@ -4,15 +4,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Get API keys
+
 RAPID_KEY = os.getenv("RAPIDAPI_KEY")
 RAPID_HOST = os.getenv("RAPIDAPI_HOST")
 NEWS_KEY = os.getenv("NEWSAPI_KEY")
 
-# --- API RETRIEVERS ---
+
 
 def get_tennis_rankings():
-    """Fetch latest ATP and WTA rankings."""
+    
     url = "https://tennis-live-data.p.rapidapi.com/players/ATP"
     headers = {
         "x-rapidapi-key": RAPID_KEY,
@@ -38,7 +38,7 @@ def get_tennis_news():
     except Exception as e:
         return f"Error fetching tennis news: {e}"
 
-# --- ROUTER FUNCTION ---
+
 
 def retrieve_context(user_question: str) -> str:
     """Decide which API to call based on user question."""
@@ -49,5 +49,5 @@ def retrieve_context(user_question: str) -> str:
     elif any(word in q for word in ["news", "tournament", "update", "headline", "article"]):
         return get_tennis_news()
     else:
-        # fallback context — general tennis reasoning
+        
         return "General tennis knowledge: discuss rules, technique, coaching, or history."

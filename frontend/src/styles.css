@@ -1,4 +1,4 @@
-/* ---------- GLOBAL ---------- */
+
 body {
   margin: 0;
   font-family: 'Inter', 'Poppins', sans-serif;
@@ -12,7 +12,7 @@ body {
   transition: all 0.25s ease-in-out;
 }
 
-/* ---------- APP CONTAINER ---------- */
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ body {
   height: 100vh;
 }
 
-/* ---------- NAVBAR ---------- */
+
 .navbar-horizontal {
   position: fixed;
   top: 0;
@@ -67,7 +67,7 @@ body {
 
 .navbar-brand-left {
   font-weight: 800;
-  font-size: 2rem;              /* increased size */
+  font-size: 2rem;              
   color: #16a34a;               
   cursor: pointer;
   text-decoration: none;        
@@ -76,7 +76,7 @@ body {
 }
 
 .navbar-brand-left:hover {
-  color: #15803d;               /* darker green on hover */
+  color: #15803d;               
   transform: scale(1.05);
 }
 
@@ -86,7 +86,7 @@ body {
   color: #15803d;
 }
 
-/* Vertical sidebar (Chat Mode) */
+
 .navbar-vertical {
   width: 290px;
   background: #ffffff;
@@ -118,7 +118,6 @@ body {
   transform: translateX(4px);
 }
 
-/* ---------- MAIN VIEW ---------- */
 .main-view {
   flex: 1;
   padding-top: 72px;
@@ -133,7 +132,7 @@ body {
   height: 100vh;
 }
 
-/* ---------- LANDING ---------- */
+
 .landing {
   min-height: calc(100vh - 72px);
   display: flex;
@@ -179,7 +178,7 @@ body {
   pointer-events: none;
 }
 
-/* ---------- CHAT PAGE ---------- */
+
 .chat-wrapper {
   display: flex;
   flex-direction: column;
@@ -250,7 +249,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* ---------- ABOUT / FEATURES ---------- */
+
 .about-page,
 .features-page {
   min-height: calc(100vh - 72px);
@@ -287,13 +286,13 @@ body {
   color: #22c55e;
 }
 
-/* ---------- ANIMATIONS ---------- */
+
 @keyframes bounce {
   from { opacity: 0.4; transform: translateY(0); }
   to { opacity: 1; transform: translateY(-4px); }
 }
 
-/* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 992px) {
   .navbar-vertical {
     width: 100%;
@@ -322,7 +321,7 @@ body {
   }
 }
 
-/* ---------- TYPING INDICATOR ---------- */
+
 .typing-dots {
   display: flex;
   align-items: center;
@@ -335,7 +334,7 @@ body {
   display: inline-block;
   width: 7px;
   height: 7px;
-  background: #16a34a; /* same green as theme */
+  background: #16a34a; 
   border-radius: 50%;
   opacity: 0.4;
   animation: bounce 1s infinite ease-in-out;
@@ -349,7 +348,7 @@ body {
   animation-delay: 0.4s;
 }
 
-/* ---------- NEWS PAGE ---------- */
+
 .news-page {
   min-height: calc(100vh - 72px);
   background: #f9fafb;

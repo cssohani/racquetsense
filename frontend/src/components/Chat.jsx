@@ -12,7 +12,7 @@ export default function Chat() {
   const bodyRef = useRef(null);
   const hasRunRef = useRef(false);
 
-  // Scroll to bottom when messages change
+
   useEffect(() => {
     bodyRef.current?.scrollTo({
       top: bodyRef.current.scrollHeight,
@@ -20,18 +20,18 @@ export default function Chat() {
     });
   }, [messages, loading]);
 
-  // Handle first query from landing
+
   useEffect(() => {
     if (initialQuery && !hasRunRef.current) {
       hasRunRef.current = true;
 
-      // show user’s question immediately
+
       setMessages([{ role: "user", content: initialQuery }]);
 
-      // send to backend and append bot response
+      
       send(initialQuery, { appendUser: false });
     } else if (!initialQuery && !hasRunRef.current) {
-      // if no initial query, show greeting message
+      
       hasRunRef.current = true;
       setMessages([{ role: "bot", content: "Hi! Ask me anything about tennis 🎾" }]);
     }
