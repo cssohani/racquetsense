@@ -33,7 +33,7 @@ export default function Chat() {
     } else if (!initialQuery && !hasRunRef.current) {
       
       hasRunRef.current = true;
-      setMessages([{ role: "bot", content: "Hi! Ask me anything about tennis 🎾" }]);
+      setMessages([{ role: "bot", content: "Hi! Ask me anything about tennis" }]);
     }
   }, [initialQuery]);
 

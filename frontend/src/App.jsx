@@ -5,6 +5,7 @@ import Chat from "./components/Chat";
 import About from "./components/About";
 import Features from "./components/Features";
 import News from './components/News';
+import Footer from './components/Footer';
 import "./styles.css";
 
 export default function App() {
@@ -28,6 +29,8 @@ export default function App() {
           <Route path="/news" element={<News />} />
         </Routes>
       </main>
+
+      {!isChat && <Footer />}
     </div>
   );
 }

@@ -89,7 +89,7 @@ body {
 
 .navbar-vertical {
   width: 290px;
-  background: #ffffff;
+  background: #ecfdf5;
   border-right: 1px solid #e2e8f0;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
   padding: 2rem 1.5rem;
@@ -140,7 +140,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, #ecfdf5 0%, #f8fafc 60%);
+  background: #ecfdf5;
   position: relative;
   padding: 2rem 1rem;
 }
@@ -391,5 +391,41 @@ body {
 
 .news-card p {
   font-size: 0.9rem;
+}
+
+.footer {
+  background: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.footer-logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.footer-links a {
+  color: #475569;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #16a34a;
+  transform: translateY(-2px);
+}
+
+.social-icon {
+  font-size: 1.1rem;
+  transition: transform 0.25s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: #15803d;
 }
 
