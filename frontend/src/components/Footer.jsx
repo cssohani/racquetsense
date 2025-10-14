@@ -2,13 +2,13 @@ export default function Footer() {
   return (
     <footer className="footer mt-auto py-4 px-4">
       <div className="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
-        {/* Brand */}
+        
         <div className="d-flex align-items-center mb-3 mb-md-0">
           <span className="footer-logo fw-bold">RacquetSense</span>
           <span className="text-muted small ms-2">© {new Date().getFullYear()}</span>
         </div>
 
-        {/* Links */}
+        
         <div className="footer-links d-flex gap-4 mb-3 mb-md-0">
           <a href="/about" className="text-decoration-none text-secondary small">
             About
@@ -27,7 +27,7 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Socials */}
+        
         <div className="d-flex gap-3">
           <a
             href="https://twitter.com"
